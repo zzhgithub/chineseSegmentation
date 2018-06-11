@@ -9,9 +9,28 @@ import java.util.Map;
  */
 public interface Context {
 
-    //这里还可以加入需要的数据参数
+    /**
+     * get the buffer of file
+     * @return
+     */
     ByteBuffer buffer();
+
+    /**
+     * get current State
+     * @return
+     */
     State state();
+
+    /**
+     * set current State
+     * @return
+     */
     void state(State state);
+
+
+    /**
+     * get the Index of Character
+     * @return
+     */
     Map<Character,Long> index();
 }
