@@ -15,12 +15,12 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ContextImpl implements Context {
 
-    State state;
-    State preState;
-    ByteBuffer buffer;
-    Map<Character,Long> indexMap = new ConcurrentHashMap<>();
-    List<Character> list = new ArrayList<>();
-    Matrix matrix = new ElasticMatrix();
+    private State state;
+    private State preState;
+    private ByteBuffer buffer;
+    private Map<Character,Long> indexMap = new ConcurrentHashMap<>();
+    private List<Character> list = new ArrayList<>();
+    private Matrix matrix = new ElasticMatrix();
 
     @Override
     public Map<Character, Long> index() {
