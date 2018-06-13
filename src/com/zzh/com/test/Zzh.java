@@ -8,7 +8,7 @@ import java.io.IOException;
  */
 public class Zzh {
 
-    private static final String file = "/Users/zhouzihao/mytmp/statetest/all.txt";
+    private static final String file = "/Users/zhouzihao/mytmp/chineseSegmentation/all.txt";
 
     public static void main(String[] args){
         long start = System.currentTimeMillis();
