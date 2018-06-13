@@ -98,7 +98,14 @@ public enum States implements State {
     // 这里使用的汉字个数是 3500到4000那么使用
     public void matrix(Context context,char pre,char next){
         //index list
+        Integer x = context.indexList().indexOf(pre);
+        Integer y = context.indexList().indexOf(next);
+        //这里跳过没有收录的字段
+        if(x<0 || y<0){
+            return;
+        }
         //决定了使用链表吧！反正是稀松矩阵嘞
+        context.matrix().inc(x,y);
     }
 
 }

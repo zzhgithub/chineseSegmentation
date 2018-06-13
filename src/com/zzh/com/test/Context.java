@@ -42,4 +42,6 @@ public interface Context {
     List<Character> indexList();
 
     void addIndex(Character character);
+
+    Matrix matrix();
 }

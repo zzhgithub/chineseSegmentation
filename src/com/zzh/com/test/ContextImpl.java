@@ -20,6 +20,7 @@ public class ContextImpl implements Context {
     ByteBuffer buffer;
     Map<Character,Long> indexMap = new ConcurrentHashMap<>();
     List<Character> list = new ArrayList<>();
+    Matrix matrix = new ElasticMatrix();
 
     @Override
     public Map<Character, Long> index() {
@@ -67,4 +68,12 @@ public class ContextImpl implements Context {
     public void addIndex(Character character) {
         list.add(character);
     }
+
+    @Override
+    public Matrix matrix() {
+        return matrix;
+    }
+
+
+    //todo 结果的持久化
 }
