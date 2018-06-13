@@ -8,6 +8,7 @@ import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -21,6 +22,13 @@ public class ContextImpl implements Context {
     private Map<Character,Long> indexMap = new ConcurrentHashMap<>();
     private List<Character> list = new ArrayList<>();
     private Matrix matrix = new ElasticMatrix();
+
+    public ContextImpl(List<Character> list, Matrix matrix) {
+        if (Objects.nonNull(list))
+            this.list = list;
+        if (!Objects.nonNull(matrix))
+            this.matrix = matrix;
+    }
 
     @Override
     public Map<Character, Long> index() {

@@ -1,10 +1,12 @@
 package com.zzh.com.test;
 
+import java.io.Serializable;
+
 /**
  * 管理矩阵的类 2元组
  * Created by zhouzihao on 2018/6/12.
  */
-public interface Matrix {
+public interface Matrix extends Serializable{
 
     /**
      * 给固定位置添加一

@@ -86,7 +86,8 @@ public enum States implements State {
         Long hit = context.index().get(i);
         if (hit ==null){
             context.index().put(i,0L);
-            context.addIndex(i);
+            if (context.indexList().indexOf(i)<0)
+                context.addIndex(i);
         }else {
             context.index().put(i,hit+1);
         }
