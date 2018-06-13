@@ -1,6 +1,7 @@
 package com.zzh.com.test;
 
 import java.nio.ByteBuffer;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,4 +34,12 @@ public interface Context {
      * @return
      */
     Map<Character,Long> index();
+
+    State preState();
+
+    void preState(State state);
+
+    List<Character> indexList();
+
+    void addIndex(Character character);
 }

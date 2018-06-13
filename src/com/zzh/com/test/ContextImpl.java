@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -14,8 +16,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ContextImpl implements Context {
 
     State state;
+    State preState;
     ByteBuffer buffer;
     Map<Character,Long> indexMap = new ConcurrentHashMap<>();
+    List<Character> list = new ArrayList<>();
 
     @Override
     public Map<Character, Long> index() {
@@ -42,5 +46,25 @@ public class ContextImpl implements Context {
     @Override
     public void state(State state) {
         this.state = state;
+    }
+
+    @Override
+    public State preState() {
+        return preState;
+    }
+
+    @Override
+    public void preState(State state) {
+        preState = state;
+    }
+
+    @Override
+    public List<Character> indexList() {
+        return list;
+    }
+
+    @Override
+    public void addIndex(Character character) {
+        list.add(character);
     }
 }

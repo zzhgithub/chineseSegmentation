@@ -40,7 +40,13 @@ public enum States implements State {
             context.buffer().get(test);
             char[] list = new String(test).toCharArray();
             indexOf(context,list[0]);
+            // 计算字间互信息矩阵
+            if (context.preState() == CN){
+                matrix(context,preChar,list[0]);
+            }
             context.state(START);
+            context.preState(CN);
+            preChar = list[0];
             return true;
         }
     },
@@ -48,13 +54,13 @@ public enum States implements State {
         @Override
         public boolean process(Context context) {
             context.buffer().reset();//恢复
-            //处理英文等
+            //处理英文
             byte[] test = new byte[1];//英文只要读1个字符
             context.buffer().get(test);
             char[] list = new String(test).toCharArray();
             //FIXME 这里不处理英文单词
-//            indexOf(context,list[0]);
             context.state(START);
+            context.preState(EN);
             return true;
         }
     },
@@ -80,10 +86,19 @@ public enum States implements State {
         Long hit = context.index().get(i);
         if (hit ==null){
             context.index().put(i,0L);
+            context.addIndex(i);
         }else {
             context.index().put(i,hit+1);
         }
     }
 
+    public static char preChar;
+
     //todo 记录一个词后出现另外一个词
+    // 这里使用的汉字个数是 3500到4000那么使用
+    public void matrix(Context context,char pre,char next){
+        //index list
+        //决定了使用链表吧！反正是稀松矩阵嘞
+    }
+
 }
